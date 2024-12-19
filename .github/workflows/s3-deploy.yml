@@ -15,11 +15,10 @@ jobs:
     steps:
         - uses: actions/checkout@v1
 
-        - name: Deploy to S3
-          uses: lbertenasco/s3-deploy@v1
-          with:
-            folder: .
-            bucket: ${{ secrets.S3_BUCKET }}
-            target-folder: static-content/  # Specify your subfolder here
-            dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
-            invalidation: "/*"
+        - name: Deploy Static Content to S3
+          run: |
+            aws s3 sync . s3://${{ secrets.S3_BUCKET }}/static-content --delete
+  
+        - name: Invalidate CloudFront Cache
+          run: |
+            aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
