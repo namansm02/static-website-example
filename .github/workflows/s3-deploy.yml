@@ -17,7 +17,7 @@ jobs:
 
         - name: Deploy Static Content to S3
           run: |
-            aws s3 cp . s3://tfs-idp-test-bucket/static-content --recursive --exclude ".git/*" --exclude ".github/*"
+            aws s3 cp . s3://tfs-idp-test-bucket//static-content --recursive --exclude ".git/*" --exclude ".github/*" --acl public-read --region ${{ secrets.AWS_DEFAULT_REGION }}
   
         - name: Invalidate CloudFront Cache
           run: |
