@@ -4,5 +4,5 @@ metadata:
   name: "static-website-example"
 spec:
   type: service
-  owner: namanm
+  owner: naman.mathur
   lifecycle: experimental
