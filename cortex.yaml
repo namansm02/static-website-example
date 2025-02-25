@@ -1,8 +1,0 @@
-# API Spec and Version
-openapi: 3.0.0
-
-# Service Descriptors
-info:
-  title: Sample Static Webpage
-  x-cortex-tag: sample-static-webpage
-  description: Sample webpage for testing CI/CD pipeline: github actions to s3 bucket and cloudfront dist
